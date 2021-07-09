@@ -48,6 +48,15 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   visibility: visible;
   opacity: 1;
 }
+.close {
+  position: absolute;
+  right: 1.5rem;
+  top: 0.5rem;
+  font-size: 2rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: inherit;
+}
 .alert-warning {
  color:#8a6d3b;
  background-color:#fcf8e3;
