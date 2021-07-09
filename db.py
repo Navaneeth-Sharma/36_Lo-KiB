@@ -22,7 +22,19 @@ def validate_user(email):#for login authentication
     user_data = users_collection.find_one({'mail': email})
     college_data = college_collection.find_one({'mail': email})
     if user_data:
-        return user_data['password'], user_data['type']
+        return user_data['password'], user_data['type'] if user_data else None
+    elif college_data:
+        return college_data['password'], college_data['type'] if college_data else None
     else:
-        return college_data['password'], college_data['type']
+        return None
 
+def get_email(email,choice):
+    if choice == 'Student':
+        return users_collection.count_documents({'mail':email})
+    else:
+        return college_collection.count_documents({'mail': email})
+
+def update_password(user_mail, password):
+    password_hash = generate_password_hash(password)
+    users_collection.update_one({'mail': user_mail}, {'$set': {'password': password_hash}})
+    college_collection.update_one({'mail': user_mail}, {'$set': {'password': password_hash}})

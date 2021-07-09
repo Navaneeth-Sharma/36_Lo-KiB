@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash
+import smtplib
+from flask_jwt_extended import create_access_token, decode_token, JWTManager
+from return_time import return_expiry_time
+from db import register_user, validate_user, get_email, update_password
 
-from db import register_user, validate_user, get_username
 app = Flask(__name__)
 app.secret_key = 'Hack@utsav'
-
+jwt = JWTManager(app)
 
 @app.route('/')
 def first():
@@ -17,11 +20,14 @@ def login():
     if request.method == 'POST':
         email = request.form.get('emailid')
         password_input = request.form.get('password')
-        details=validate_user(email)
-        if details[1] == 'Student' and check_password_hash(details[0], password_input):
-            return redirect(url_for('stud_home'))
-        elif details[1] == 'College' and check_password_hash(details[0], password_input):
-            return redirect(url_for('coll_home'))
+        details = validate_user(email)
+        if details:
+            if details[1] == 'Student' and check_password_hash(details[0], password_input):
+                return redirect(url_for('stud_home'))
+            elif details[1] == 'College' and check_password_hash(details[0], password_input):
+                return redirect(url_for('coll_home'))
+            else:
+                flash('Login Unsuccessful. Please check email and password')
         else:
             flash('Login Unsuccessful. Please check email and password')
     return render_template('login.html')
@@ -54,10 +60,41 @@ def coll_home():
 
 @app.route('/forgot', methods=['GET', 'POST'])
 def forgot():
+    if request.method == 'POST':
+        choice = request.form.get('radiob')
+        email = request.form.get('emailid')
+        url = request.host_url + 'reset_password'
+        if get_email(email, choice):
+            with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.ehlo()
+                smtp.login('vrujeshhm.lokib@gmail.com', 'Vruje@230620')
+                expires = return_expiry_time()
+                unique_code = create_access_token(str(email), expires_delta=expires)
+                subject = 'Reset your Password for Lo-KiB tech'
+                body = f'To reset your password, click on the link below: \n {url}/{unique_code} \n\n This link will expire in 5 minutes!! \n'
+                msg = f'Subject: {subject}\n\n {body}'
+                smtp.sendmail('vrujeshhm.lokib@gmail.com', email, msg)
+                flash('Mail has been Sent')
+        else:
+            flash('Enter a valid E-mail address')
     return render_template('forgot.html')
 
-@app.route('/reset', methods=['GET', 'POST'])
-def forgot():
+
+@app.route('/reset_password/<code>', methods=['GET', 'POST'])
+def reset_password(code):
+    user_mail = decode_token(code)['identity']
+    if request.method == 'POST':
+        password_1 = request.form.get('password_1')
+        password_2 = request.form.get('password_2')
+        if password_1 == password_2:
+            update_password(user_mail, password_1)
+            flash('Password changed successfully')
+            return redirect(url_for('login'))
+        else:
+            flash('Passwords do not match')
+
     return render_template('resetpassword.html')
 
 if __name__ == '__main__':
