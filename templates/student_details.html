@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<link rel="stylesheet" href="static/css/style2.css">
+
+<body>
+     <form method=post enctype=multipart/form-data>
+    <h3>STUDENT REGISTRATION FORM</h3>
+
+
+    <table align="center" cellpadding="20">
+
+        <tr>
+            <td>FIRST NAME</td>
+                <td><input type="text" name="First_Name" maxlength="30" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>LAST NAME</td>
+                <td><input type="text" name="Last_Name" maxlength="30" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+                <td><input type="text" name="emailid" maxlength="30" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>DATE OF BIRTH</td>
+
+            <td>
+                <input type="date" name="dob" id="date" aria-describedby="date-format" min="2000-03-01" max="2031-01-01" />
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>MOBILE NUMBER</td>
+            <td>
+                <input type="text" name="Mobile_Number" maxlength="10" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>GENDER</td>
+            <td>
+                Male <input type="radio" name="Gender" value="Male" />
+                Female <input type="radio" name="Gender" value="Female" />
+                Other <input type="radio" name="Gender" value="Other" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>ADDRESS <br /><br /><br /></td>
+            <td><textarea name="Address" rows="4" cols="30"></textarea></td>
+        </tr>
+
+        <tr>
+            <td>CITY</td>
+            <td><input type="text" name="City" maxlength="30" />
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>PIN CODE</td>
+            <td><input type="text" name="Pin_Code" maxlength="6" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>STATE</td>
+            <td><input type="text" name="State" maxlength="30" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>COUNTRY</td>
+            <td><input type="text" name="Country" value="India" readonly="readonly" /></td>
+        </tr>
+
+
+        <tr>
+            <td>ACHEIVEMENT <br /></td>
+
+            <td>
+                <input type="checkbox" name="Gender" value="Male" />National Level Winner  <input type="file" accept=""><br>
+                <input type="checkbox" name="Gender" value="Female" />State Level Winner   <input type="file" accept=""><br>
+                <input type="checkbox" name="Gender" value="Other" />District Level Winner <input type="file" accept=""><br>
+                <input type="checkbox" name="Gender" value="Other" />Taluk Level Winner    <input type="file" accept=""><br>
+                <input type="checkbox" name="Gender" value="Other" />Hobli Level Winner    <input type="file" accept=""><br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>PREVIOUS YEAR <br /><br /></td>
+
+            <td>
+                <table>
+
+                    <tr>
+                        <td align="center"><b>Class</b></td>
+                        <td align="center"><b>School</b></td>
+                        <td align="center"><b>Percentage</b></td>
+                        <td align="center"><b>Year</b></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="text" name="Class" maxlength="30" /></td>
+                        <td><input type="text" name="school" maxlength="30" /></td>
+                        <td><input type="text" name="percentage" maxlength="30" /></td>
+                        <td><input type="text" name="year" maxlength="30" /></td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </td>
+        </tr>
+    </table>
+
+    </form>
+
+</body>
+
+</html>

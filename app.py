@@ -51,12 +51,35 @@ def signup():
 
 @app.route('/studenthome', methods=['GET', 'POST'])
 def stud_home():
-    return render_template('index.html')
+    return render_template('stud_index.html')
 
 
 @app.route('/collegehome', methods=['GET', 'POST'])
 def coll_home():
-    return render_template('index.html')
+    return render_template('coll_index.html')
+
+@app.route('/register_student', methods=['GET', 'POST'])
+def stud_register():
+    if request.method == 'POST':
+        f_name = request.form.get('First_Name')
+        l_name = request.form.get('Last_Name')
+        email = request.form.get('emailid')
+        dob=request.form.get('dob',type=toDate)
+        mobile = request.form.get('Mobile_Number')
+        gender = request.form.get('Gender')
+        address = request.form.get('Address')
+        city=request.form.get('City')
+        pin = request.form.get('Pin_Code')
+        state = request.form.get('State')
+        country = request.form.get('Country')
+        achievement = request.form.get('Username')
+        previous_class = request.form.get('Class')
+        previous_school = request.form.get('school')
+        previous_score = request.form.get('percentage')
+        previous_year = request.form.get('year')
+        #save_student_details()
+
+    return render_template('student_details.html')
 
 @app.route('/forgot', methods=['GET', 'POST'])
 def forgot():
