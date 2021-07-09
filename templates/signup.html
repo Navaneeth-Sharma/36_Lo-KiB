@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Lo-kiB Register</title>
+    <title>Lo-kiB Technologies</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -31,23 +31,6 @@
     <link href="../static/css/style.css" rel="stylesheet">
 
 </head>
-<script language="Javascript">
-    function hideCollege() {
-
-        document.getElementById("College").style.visibility = "hidden";
-        document.getElementById("Student").style.visibility = "visible";
-        var radioButton = document.getElementById("radio");
-        radioButton.checked = false;
-    }
-
-    function hideStudent() {
-        document.getElementById("Student").style.visibility = "hidden";
-        document.getElementById("College").style.visibility = "visible";
-        var radioButton = document.getElementById("radio1");
-        radioButton.checked = false;
-    }
-
-</script>
 
 <body>
 
@@ -56,15 +39,15 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1 class="text-light"><a href="index.html"><span>LO-kiB</span></a></h1>
+                <h1 class="text-light"><a href="/"><span>LO-kiB</span></a></h1>
 
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
-                    <li><a class="nav-link scrollto" href="index.html">About Us</a></li>
-                    <li><a class="nav-link scrollto" href="index.html">Services</a></li>
+                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/">About Us</a></li>
+                    <li><a class="nav-link scrollto" href="/">Services</a></li>
                     <li class="dropdown"><a href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="/login">SignIn</a></li>
@@ -83,118 +66,62 @@
         <!-- signup -->
         <div id="container" class="container">
             <div class="row">
+
                 <section class="col align-items-center flex-col sign-in">
+                    <div class="form-wrapper align-items-center">
+                        <form class="form sign-in" method=post enctype=multipart/form-data>
+                            <div style="display: flex; margin-left:2px;">
+                                <div>
+                                    <input type="radio" id="College/School" name="radiob" value="College"
+                                        checked>
+                                    <label for="College/School"><b style="margin-right: 12px;">
+                                            College/School</b></label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Student" name="radiob" value="Student">
+                                    <label for="Student"><b>Student</b> </label>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <i class="bx bxs-user"></i>
+                                <input type="text" placeholder="School/College Name or UserName" name="UserName" required />
+                            </div>
+                            <div class="input-group">
+                                <i class="bx bx-mail-send"></i>
+                                <input type="email" placeholder="Email" name="emailid" required />
+                            </div>
+                            <div class="input-group">
+                                <i class="bx bxs-lock-alt"></i>
+                                <input type="password" name="password" placeholder="Password" id="password" required />
+                                <i class="bi bi-eye-slash eyes" id="togglePassword"></i>
+                            </div>
+                            <div class="input-group">
+                                <i class="bx bxs-lock-alt"></i>
+                                <input type="password" name="cpassword" placeholder="Confirm Password" id="Cpassword" required />
+                                <i class="bi bi-eye-slash eyes" id="toggleCPassword"></i>
+                            </div>
+
+                            <button class="buttons" type="submit">Sign up</button>
+                            <p style="margin-left: 25%; margin-top: 10px;">
+                                <span>Already have an account?</span>
+                                <a href="/login" class="pointer"> Sign in </a>
+                            </p>
+                            <!--flash message section-->
+                            <div class="flash_message">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-warning alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p class="flashtxt">{{ message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                        </form>
+                    </div>
                 </section>
-                <input type="radio" id="radio" style="cursor: pointer;" onClick=" hideStudent()" name="radiob" value="College" class="radio" checked>College / School</input>
-                <input type="radio" style="cursor: pointer;" id="radio1" onClick="hideCollege()" name="radiob" value="Student" class="radio">Student</input>
-                <div style="position: absolute; left: 50%; margin-top:80px;" id="College">
-                    <section class="col align-items-center flex-col sign-in">
-                        <div class="form-wrapper align-items-center">
-                            <form class="form sign-in" method=post enctype=multipart/form-data>
-                                <div class="input-group">
-                                    <i class="bx bxs-user"></i>
-                                    <input type="text" placeholder="School/College Name" name="UserName" required />
-                                </div>
-                                <div class="input-group">
-                                    <i class="bx bx-mail-send"></i>
-                                    <input type="email" placeholder="Email" name="emailid" required />
-                                </div>
-                                <div class="input-group">
-                                    <i class="bx bx-phone"></i>
-                                    <input type="number" placeholder="Phone Number" name="phonenumber" required />
-                                </div>
-                                <div class="input-group">
-                                    <i class="bx bxs-lock-alt"></i>
-                                    <input type="password" name="password" placeholder="Password" id="password"
-                                        required />
-                                    <i class="bi bi-eye-slash eyes" id="togglePassword"></i>
-                                </div>
-
-                                <div class="input-group">
-                                    <i class="bx bxs-lock-alt"></i>
-                                    <input type="password" name="cpassword" placeholder="Confirm Password"
-                                        id="Cpassword" required />
-
-                                    <i class="bi bi-eye-slash eyes" id="toggleCPassword"></i>
-
-                                </div>
-                                <button class="buttons" type="submit">Sign up</button>
-                                <p style="margin-left: 25%; margin-top: 10px;">
-                                    <span>Already have an account?</span>
-                                    <a href="/login" class="pointer"> Sign in </a>
-                                </p>
-                                <!--flash message section-->
-                                <div class="flash_message">
-                                    {% with messages = get_flashed_messages() %}
-                                    {% if messages %}
-                                    {% for message in messages %}
-                                    <div class="alert alert-warning alert-dismissible">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <p class="flashtxt">{{ message }}</p>
-                                    </div>
-                                    {% endfor %}
-                                    {% endif %}
-                                    {% endwith %}
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-                </div>
-                <!-- student -->
-                <div style="position: absolute; left: 50%; top: 80px; visibility:hidden" id="Student">
-                    <!-- sign up  part-->
-                    <section class="col align-items-center flex-col sign-in">
-                        <div class="form-wrapper align-items-center">
-                            <form class="form sign-in" method=post enctype=multipart/form-data>
-                                <div class="input-group">
-                                    <i class="bx bxs-user"></i>
-                                    <input type="text" placeholder="UserName" name="UserName" required />
-                                </div>
-                                <div class="input-group">
-                                    <i class="bx bx-mail-send"></i>
-                                    <input type="email" placeholder="Email" name="emailid" required />
-                                </div>
-                                <div class="input-group">
-                                    <i class="bx bx-phone"></i>
-                                    <input type="number" placeholder="Phone Number" name="phonenumber" required />
-                                </div>
-                                <div class="input-group">
-                                    <i class="bx bxs-lock-alt"></i>
-                                    <input type="password" name="passsword" placeholder="Password" id=" passsword "
-                                        required />
-                                    <i class="bi bi-eye-slash eyes" id=" togglePasssword "></i>
-                                </div>
-
-                                <div class="input-group">
-                                    <i class="bx bxs-lock-alt"></i>
-                                    <input type="password" name="cpasssword" placeholder="Confirm Password"
-                                        id=" Cpasssword " required />
-
-                                    <i class="bi bi-eye-slash eyes" id=" toggleCPasssword "></i>
-
-                                </div>
-                                <button class="buttons" type="submit">Sign up</button>
-                                <p style="margin-left: 25%; margin-top: 10px;">
-                                    <span>Already have an account?</span>
-                                    <a href="/login" class="pointer"> Sign in </a>
-                                </p>
-                                <!--flash message section-->
-                                <div class="flash_message">
-                                    {% with messages = get_flashed_messages() %}
-                                    {% if messages %}
-                                    {% for message in messages %}
-                                    <div class="alert alert-warning alert-dismissible">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <p class="flashtxt">{{ message }}</p>
-                                    </div>
-                                    {% endfor %}
-                                    {% endif %}
-                                    {% endwith %}
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-                </div>
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->

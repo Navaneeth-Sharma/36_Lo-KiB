@@ -30,9 +30,9 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        choice=request.form.get('radiob')
+        choice = request.form.get('radiob')
         print(choice)
-        username=request.form.get('username')
+        username=request.form.get('Username')
         email = str(request.form.get('emailid'))
         passw = request.form.get('password')
         confirm = request.form.get('cpassword')
