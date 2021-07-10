@@ -58,7 +58,7 @@ def stud_home():
 def coll_home():
     return render_template('coll_index.html')
 
-@app.route('/register_student', methods=['GET', 'POST'])
+@app.route('/to_stud_reg', methods=['GET', 'POST'])
 def to_stud_reg():
     if request.method == 'POST':
         return render_template('student_details.html')
