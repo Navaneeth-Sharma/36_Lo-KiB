@@ -58,10 +58,6 @@ def stud_home():
 def coll_home():
     return render_template('coll_index.html')
 
-@app.route('/to_stud_reg', methods=['GET', 'POST'])
-def to_stud_reg():
-    if request.method == 'POST':
-        return render_template('student_details.html')
 
 @app.route('/register_student', methods=['GET', 'POST'])
 def stud_register():
@@ -69,7 +65,7 @@ def stud_register():
         f_name = request.form.get('First_Name')
         l_name = request.form.get('Last_Name')
         email = request.form.get('emailid')
-        dob=request.form.get('dob',type=toDate)
+        dob=request.form.get('dob')
         mobile = request.form.get('Mobile_Number')
         gender = request.form.get('Gender')
         address = request.form.get('Address')
@@ -84,9 +80,7 @@ def stud_register():
         previous_year = request.form.get('year')
         #save_student_details()
 
-    return render_template('stud_index.html')
-
-
+    return render_template('student_details.html')
 
 
 
