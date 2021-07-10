@@ -4,16 +4,68 @@ from werkzeug.security import check_password_hash
 import smtplib
 from flask_jwt_extended import create_access_token, decode_token, JWTManager
 from return_time import return_expiry_time
-from db import register_user, validate_user, get_email, update_password
+from db import register_user, validate_user, get_email, update_password,save_student_details,sc_requirement_update,save_college_details,save_school_details
+from pymongo import MongoClient
+from werkzeug.utils import secure_filename
 
+import base64
 app = Flask(__name__)
 app.secret_key = 'Hack@utsav'
 jwt = JWTManager(app)
+
+PEOPLE_FOLDER = os.path.join('static', 'uploads')
+app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 def first():
     return render_template('welcome.html')
 
+def upload_image(mail):
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        return redirect(request.url)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(filename)
+        imageFile = open(filename, 'rb')
+        z = base64.b64encode(imageFile.read())
+        connection = MongoClient("mongodb+srv://Akash_Lo-kiB:3HvOrW2YS2O0Ksnf@cluster0.awzi6.mongodb.net/test?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority")
+        db = connection['Lo-KiB']
+        collection = db['institute_details']
+        collection.update_one({'mail': mail}, {"$push": {'image': z}})
+        imageFile.close()
+    else:
+        flash('Allowed image types are -> png, jpg, jpeg, gif')
+        return redirect(request.url)
+
+def upload_certificate(mail):
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        return redirect(request.url)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(filename)
+        imageFile = open(filename, 'rb')
+        z = base64.b64encode(imageFile.read())
+        connection = MongoClient("mongodb+srv://Akash_Lo-kiB:3HvOrW2YS2O0Ksnf@cluster0.awzi6.mongodb.net/test?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority")
+        db = connection['Lo-KiB']
+        collection = db['student_details']
+        collection.update_one({'mail': mail}, {"$push": {'image': z}})
+        imageFile.close()
+    else:
+        flash('Allowed image types are -> png, jpg, jpeg, gif')
+        return redirect(request.url)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -49,14 +101,87 @@ def signup():
     return render_template('signup.html')
 
 
+
+@app.route('/collegehome', methods=['GET', 'POST'])
+def coll_home():
+    if request.method == 'POST':
+        type = request.form.get('Type')
+        if type=='school':
+            return redirect(url_for(school_register))
+        else:
+            return redirect(url_for(college_register))
+    return render_template('coll_index.html')
+
+
+@app.route('/school_details', methods=['GET', 'POST'])
+def school_register():
+    if request.method == "POST":
+        name = request.form.get('sc_name')
+        mail = request.form.get('mail')
+        addr = request.form.get('address')
+        contact = request.form.get('contact')
+        amenity = request.form.get('amenity')
+        pin = request.form.get('pin')
+        state = request.form.get('state')
+        country = request.form.get('country')
+        try:
+            upload_image(mail)
+        except:
+            pass
+        board = request.form.get('board')
+        uniid = request.form.get('uni_ID')
+        courses = request.form.get('courses')
+        fees = request.form.get('fee')
+        save_college_details(name, mail, addr, country, contact, amenity, pin, state, board, uniid, courses, fees)
+    return render_template('school_details.html')
+
+
+@app.route('/college_details', methods=['GET', 'POST'])
+def college_register():
+    if request.method == "POST":
+        name = request.form.get('name')
+        mail = request.form.get('email')
+        addr = request.form.get('address')
+        contact = request.form.get('phoneno')
+        amenity = request.form.get('amenities')
+        pin = request.form.get('pin')
+        state = request.form.get('state')
+        country = request.form.get('country')
+        try:
+            upload_image(mail)
+        except:
+            pass
+        board = request.form.get('board')
+        uniid = request.form.get('uni_ID')
+        courses = request.form.get('courses')
+        fees = request.form.get('fee')
+        save_college_details(name, mail,addr,country,contact,amenity,pin,state,board,uniid,courses,fees)
+        flash("your details have been stored successfully.Check out our pricing for better usage")
+        return redirect(url_for(coll_home))
+    return render_template('coll_details.html')
+
+
+@app.route('/college_req', methods=['GET', 'POST'])
+def coll_require():
+    if request.method == "POST":
+        sc_name = request.form.get('ins_name')
+        percentage = request.form.get('percetage')
+        seats = request.form.get('seats')
+        last_date = request.form.get('last_date')
+        bank = request.form.get('bank')
+        sc_requirement_update(sc_name,percentage,seats,last_date,bank)
+    return render_template('college_req.html')
+
+
+@app.route('/pricing', methods=['GET', 'POST'])
+def pricing():
+    return render_template('payment.html')
+
+
 @app.route('/studenthome', methods=['GET', 'POST'])
 def stud_home():
     return render_template('stud_index.html')
 
-
-@app.route('/collegehome', methods=['GET', 'POST'])
-def coll_home():
-    return render_template('coll_index.html')
 
 @app.route('/register_student', methods=['GET', 'POST'])
 def stud_register():
@@ -77,10 +202,45 @@ def stud_register():
         previous_school = request.form.get('school')
         previous_score = request.form.get('percentage')
         previous_year = request.form.get('year')
-        #save_student_details()
+
+        if request.form.get('national'):
+            n=1
+            try:
+                upload_certificate(email)
+            except:
+                pass
+        if request.form.get('state'):
+            s=1
+            try:
+                upload_certificate(email)
+            except:
+                pass
+        if request.form.get('district'):
+            d=1
+            try:
+                upload_certificate(email)
+            except:
+                pass
+        if request.form.get('taluk'):
+            t=1
+            try:
+                upload_certificate(email)
+            except:
+                pass
+        if request.form.get('hobli'):
+            h=1
+            try:
+                upload_certificate(email)
+            except:
+                pass
+        save_student_details(f_name,l_name,email,dob,mobile,gender,address,city,pin,state,country,achievement,previous_class,previous_school,previous_score,previous_year)
+        selection_page(email)
 
     return render_template('student_details.html')
 
+@app.route('/selelction', methods=['GET', 'POST'])
+def selection_page(mail):
+    return render_template('student_home.html',mail=mail)
 
 
 @app.route('/forgot', methods=['GET', 'POST'])
@@ -121,6 +281,10 @@ def reset_password(code):
             flash('Passwords do not match')
 
     return render_template('resetpassword.html')
+
+@app.route('/logout',  methods=['GET', 'POST'])
+def logout():
+    return redirect(url_for(first))
 
 if __name__ == '__main__':
     app.run(debug=True)
