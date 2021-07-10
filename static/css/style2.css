@@ -3,22 +3,22 @@ body{
 }
 
 h3{
-    font-family: Calibri; 
-    font-size: 32px;         
-    font-style: normal; 
-    font-weight: bold; 
-    color:rgb(233, 80, 80);
-    text-align: center; 
-    text-decoration: underline;
-  }
-  
-  table{
-    font-family: Calibri; 
-    color:black; 
-    font-size: 16px; 
+    font-family: Calibri;
+    font-size: 32px;
     font-style: normal;
     font-weight: bold;
-    /* background-color: SlateBlue; 
+    color:rgb(233, 80, 80);
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  table{
+    font-family: Calibri;
+    color:black;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    /* background-color: SlateBlue;
     border-collapse: collapse;
     border: 2px solid navy; */
   }

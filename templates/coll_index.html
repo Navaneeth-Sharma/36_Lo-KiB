@@ -46,12 +46,13 @@
 
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                        <li><a class="nav-link scrollto active" href="/collegehome">Home</a></li>
                         <li><a class="nav-link scrollto" href="#about">About Us</a></li>
                         <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                        <li><a class="nav-link scrollto" href="/college_req">Requirements Form</a></li>
                         <li class="dropdown"><a href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="/profile">Profile</a></li>
+                                <li><a href="/pricing">Pricing</a></li>
                                 <li><a href="/logout">LogOut</a></li>
                             </ul>
                         </li>
@@ -112,7 +113,7 @@
     <center>
 
 
-        <form action="/sch_clg_reg" method=post enctype=multipart/form-data>
+        <form method=post enctype=multipart/form-data>
             <label for="type">Choose Type of Institution :</label>
 
             <select name="Type" id="Type">
@@ -126,6 +127,18 @@
                 required="">
             <br>
         </form>
+         <div class="flash_message">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-warning alert-dismissible">
+                                    <a href="/login" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p class="flashtxt">{{ message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
     </center>
     <!-- Optional JavaScript; choose one of the two! -->
 

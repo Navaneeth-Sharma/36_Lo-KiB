@@ -45,13 +45,13 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/collegehome">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li class="dropdown"><a href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/login">SignIn</a></li>
-              <li><a href="/signup">Sign-Up</a></li>
+              <li><a href="/logout">logout</a></li>
+
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
@@ -84,11 +84,10 @@
             <div class="container">
                 <!-- <div class="row g-3"> -->
 
-                    <form action="/clg_registration" method="POST">
+                    <form method="POST">
                     <div class="col-12">
                         <label for="College Name" class="form-label">College Name</label>
-                        <input type="text" class="form-control" id="collegename" placeholder="collegename" value=""
-                            disabled>
+                        <input type="text" class="form-control" name="name" id="collegename" placeholder="collegename">
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -96,14 +95,14 @@
 
                     <div class="col-12">
                         <label for="email" class="form-label">Email <span style="color: #ff0000">*</span> </label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com" disabled>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com">
                         <div class="invalid-feedback">
                         </div>
                     </div>
 
                     <div class="col-12">
                         <label for="address" class="form-label">Address <span style="color: #ff0000">*</span></label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" required="">
                         <div class="invalid-feedback">
                             Please enter your complete address.
                         </div>
@@ -112,20 +111,19 @@
                     <div class="col-12">
                         <label for="contact" class="form-label">Contact Number <span
                                 style="color: #ff0000">*</span></label>
-                        <input type="number" class="form-control" id="contact_number"
+                        <input type="number" class="form-control" id="contact_number" name="phoneno"
                             placeholder="Enter your number here">
                     </div>
 
                     <div class="col-12">
                         <label for="contact" class="form-label">Amenities <span style="color: #ff0000">*</span></label>
-                        <input type="text" class="form-control" id="amenities"
-                            placeholder="Enter your Amenities here Separated by ',' ">
+                        <input type="text" class="form-control" id="amenities" name="amenities" placeholder="Enter your Amenities here Separated by ',' ">
                     </div>
 
                     <div class="col-12">
 
                         <label for="country" class="form-label">Country <span style="color: #ff0000">*</span></label>
-                        <select class="custom-select d-block w-100" id="country" name='spec_day' required="">
+                        <select class="custom-select d-block w-100" id="country"  name="country" required="">
                             <option value="">Choose...</option>
                             <option>India</option>
                             <option>Other</option>
@@ -136,7 +134,7 @@
                     <div class="col-12">
 
                         <label for="country" class="form-label">State <span style="color: #ff0000">*</span></label>
-                        <select class="custom-select d-block w-100" id="country" name='spec_day' required="">
+                        <select class="custom-select d-block w-100" id="country" name='state' required="">
                             <option value="">Choose...</option>
 
                             <option> Andhra Pradesh
@@ -204,7 +202,7 @@
 
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Pin Code <span style="color: #ff0000">*</span></label>
-                        <input type="text" class="form-control" id="pincode" placeholder="123456" required="">
+                        <input type="text" class="form-control" name="pin" id="pincode" placeholder="123456" required="">
                         <div class="invalid-feedback">
                             Please enter your Pin code .
                         </div>
@@ -213,15 +211,15 @@
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Images of College <span
                                 style="color: #ff0000">*</span></label>
-                        <input type="file" class="form-control" name="name" multiple required><br>
+                        <input type="file" class="form-control" name="file" multiple required><br>
                         <div class="invalid-feedback">
-                            Please give some Images of your College .
+                            Please give some Images of your College.
                         </div>
                     </div>
 
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Board <span style="color: #ff0000">*</span></label>
-                        <select class="custom-select d-block w-100" id="country" name='spec_day' required="">
+                        <select class="custom-select d-block w-100" id="country" name='board' required="">
                             <option value="">Choose...</option>
                             <option> State Board </option>
                             <option> CBSC </option>
@@ -235,7 +233,7 @@
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Unique ID of College <span
                                 style="color: #ff0000">*</span></label>
-                        <input type="text" class="form-control" id="pincode" placeholder="123456" required="">
+                        <input type="text" class="form-control" id="pincode" name="uni_ID" placeholder="123456" required="">
                         <div class="invalid-feedback">
                             Please enter your Pin code .
                         </div>
@@ -244,8 +242,7 @@
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Courses offered <span
                                 style="color: #ff0000">*</span></label>
-                        <input type="text" class="form-control" id="pincode"
-                            placeholder="Eg. Science, Commerce and Arts " required="">
+                        <input type="text" class="form-control" id="pincode" name="courses" placeholder="Eg. Science, Commerce and Arts " required="">
                         <div class="invalid-feedback">
                             Please enter valid details .
                         </div>
@@ -254,7 +251,7 @@
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Enter Fee Details <span
                                 style="color: #ff0000">*</span></label>
-                        <input type="text" class="form-control" id="pincode" required="">
+                        <input type="text" class="form-control" name="fee" id="pincode" required="">
                         <div class="invalid-feedback">
                             Please enter valid Details .
                         </div>
