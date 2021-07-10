@@ -252,6 +252,18 @@
                         <input type="submit" class="btn btn-primary" value="Register" id="type_ist" name="reg_school" required="">
                         </div>
                     </form>
+                <div class="flash_message">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-warning alert-dismissible">
+                                    <a href="/collegehome" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p class="flashtxt">{{ message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
 
                 </div>
             </div>

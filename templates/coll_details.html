@@ -95,7 +95,7 @@
 
                     <div class="col-12">
                         <label for="email" class="form-label">Email <span style="color: #ff0000">*</span> </label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com">
+                        <input type="email" name="email" class="form-control" id="email" >
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                     <div class="col-12">
                         <label for="Pin Code" class="form-label">Images of College <span
                                 style="color: #ff0000">*</span></label>
-                        <input type="file" class="form-control" name="file" multiple required><br>
+                        <input type="file" class="form-control" name="file" required><br>
                         <div class="invalid-feedback">
                             Please give some Images of your College.
                         </div>
@@ -259,6 +259,19 @@
 
                     <input type="submit" class="btn btn-primary" value="Register" id="type_ist" name="reg_clg" required="">
                 </form>
+                <div class="flash_message">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-warning alert-dismissible">
+                                    <a href="/collegehome" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p class="flashtxt">{{ message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+    </center>
                 <!-- </div> -->
 
             </div>

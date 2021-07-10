@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Requirements</title>
+    <link href="../static/img/Lo-KiB Techs.png" rel="icon">
+    <link href="../static/img/Lo-KiB Techs.png" rel="apple-touch-icon">
 </head>
 <link rel="stylesheet" href="static/css/style3.css">
 
@@ -55,6 +57,18 @@
     </table>
 
     </form>
+<div class="flash_message">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-warning alert-dismissible">
+                                    <a href="/collegehome" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p class="flashtxt">{{ message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
 
 </body>
 

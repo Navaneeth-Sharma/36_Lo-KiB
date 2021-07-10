@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/img/Lo-KiB Techs.png" rel="icon">
+    <link href="../static/img/Lo-KiB Techs.png" rel="apple-touch-icon">
+  <title>Home Page</title>
+</head>
+<link rel="stylesheet" href="../static/css/style4.css">
+<style>
+  .container>p {
+    align-items: center;
+  }
+</style>
+
+<body>
+  <ul>
+    <li><a href="/studenthome">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  </ul>
+
+  <div id="tagline">
+    <div>
+      <h4 style="color: blue;">{{details.institute_name}}</h4>
+      <p style="color: rgb(255, 0, 13); font-size: 50px;">{{details.mail}}<br>{{details.contact_detail}}<br>{{details.type}}</p>
+    </div>
+  </div>
+
+
+  <div class="container" >
+    <h2>Fee Structure and Details of school</h2>
+    <div class="first">
+      <li>
+        <h2>Details of college</h2>
+        <p>{{details.uniid}}</p>
+        <p>{{details.amenity}}</p>
+        <p>{{details.address}}</p>
+        <p>{{details.pincode}} {{details.state}}</p>
+      </li>
+    </div>
+    <div class="second">
+      <li>
+        <h2>Fee Structure</h2>
+        <p>{{details.board}}</p>
+        <p>{{details.courses}}</p>
+        <p>{{details.fees}}</p>
+      </li>
+    </div>
+    <h2>Please click on Apply to admit your ward on our school</h2>
+      <form method="post" enctype="multipart/form-data">
+          <button type="submit" class="btn btn-outline-success">Apply</button>
+      </form>
+  </div>
+  <br><br><br><br>
+
+  <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up" style="height: 120px; border: transparent; background-color: rgb(186, 221, 221);">
+
+        <div class="section-title" style="height: 30px; margin: auto;">
+            <h12 align="center">Activities</h12>
+            <p align="center">Check the Activities we conduct</p>
+        </div>
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" style="float: left; width: 30%; padding-right: 25px;">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                    <h4 class="title"><a href="">Study</a></h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+                        veritatis blanditiis placeat voluptatem distinctio fugiat repellat vitae
+                        fuga inventore optio esse cupiditate corporis, aspernatur delectus earum.
+                        Est nobis omnis doloremque.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200" style="float: left; width: 30%; padding-right: 25px;">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-file"></i></div>
+                    <h4 class="title"><a href="">Sports</a></h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+                        veritatis blanditiis placeat voluptatem distinctio fugiat repellat vitae
+                        fuga inventore optio esse cupiditate corporis, aspernatur delectus earum.
+                        Est nobis omnis doloremque.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300"  style="float: left; width: 30%; padding-right: 25px;">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-tachometer"></i></div>
+                    <h4 class="title"><a href="">Extra curricular</a></h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+                        veritatis blanditiis placeat voluptatem distinctio fugiat repellat vitae
+                        fuga inventore optio esse cupiditate corporis, aspernatur delectus earum.
+                        Est nobis omnis doloremque.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+  <table>
+    <tr>
+      <td>
+        <br><br><br>
+        <h4>Our School</h4>
+        <img src="../static/img/first.jfif" alt="">
+        <h4>Playground</h4>
+        <img src="../static/img/download1.jfif" alt="">
+        <h4>Library</h4>
+        <img src="../static/img/down4.jfif" alt="">
+        <h4>Other pictures of our school</h4>
+        <img src="../static/img/down5.jfif" alt="">
+        <img src="../static/img/down6.jfif" alt="">
+        <img src="../static/img/down8.jfif" alt="">
+      </td>
+    </tr>
+  </table>
+  </div>
+
+</body>
+
+</html>

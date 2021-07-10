@@ -33,7 +33,7 @@
 
         <tr>
             <td>Email</td>
-                <td><input type="text" name="emailid" maxlength="30" />
+                <td><input type="text" name="emailid" maxlength="30" placeholder="email"/>
             </td>
         </tr>
 
@@ -90,18 +90,19 @@
             <td>COUNTRY</td>
             <td><input type="text" name="Country" value="India" readonly="readonly" /></td>
         </tr>
-
+        <tr>
+            <td>drive link(Include your TC,birth certificates,mark sheet,achievements certificates)</td>
+            <td><input type="text" name="drive" placeholder="share your link" /></td>
+        </tr>
 
         <tr>
-            <td>ACHEIVEMENT <br /></td>
-
-            <td>
-                <input type="checkbox" name="National" value="national" />National Level Winner  <input type="file" name="file" accept=""><br>
-                <input type="checkbox" name="state" value="state" />State Level Winner   <input type="file" name="file" accept=""><br>
-                <input type="checkbox" name="dist" value="dist" />District Level Winner <input type="file" name="file" accept=""><br>
-                <input type="checkbox" name="taluk" value="taluk" />Taluk Level Winner    <input type="file" name="file" accept=""><br>
-                <input type="checkbox" name="hobli" value="hobli" />Hobli Level Winner    <input type="file" name="file" accept=""><br>
-            </td>
+            <td>ACHEIVEMENT (No. of prizes in Higher class)<br/></td>
+<td>
+                <input type="number" name="National" maxlength="10"/>National Level Winner<br>
+                <input type="number" name="state" maxlength="10"/>State Level Winner  <br>
+                <input type="number" name="dist" maxlength="10"/>District Level Winner <br>
+                <input type="number" name="taluk" maxlength="10"/>Taluk Level Winner  <br>
+                <input type="number" name="hobli" maxlength="10"/>school Level Winner  <br></td>
         </tr>
         <tr>
             <td>PREVIOUS YEAR <br /><br /></td>
@@ -136,6 +137,19 @@
     </table>
 
     </form>
+<div class="flash_message">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-warning alert-dismissible">
+                                    <a href="/selection" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p class="flashtxt">{{ message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+    </center>
 
 </body>
 

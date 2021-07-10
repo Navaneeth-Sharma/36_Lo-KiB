@@ -1,69 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../static/img/Lo-KiB Techs.png" rel="icon">
-    <link href="../static/img/Lo-KiB Techs.png" rel="apple-touch-icon">
-  <link href="../static/css/style2.css" rel="stylesheet">
+  <title>Lo-kiB Technologies</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-  <title>Student profile</title>
+
+  <link href="../static/img/Lo-KiB Techs.png" rel="icon">
+  <link href="../static/img/Lo-KiB Techs.png" rel="apple-touch-icon">
+
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+    rel="stylesheet">
+
+
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link href="../static/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
   <div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+
+        <div class="logo">
+          <h1 class="text-light"><a href="stud_index.html"><span>LO-kiB</span></a></h1>
+
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="/collegehome">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+            <li><a class="nav-link scrollto" href="#services">Services</a></li>
+            <li class="dropdown"><a href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">LogOut</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="#footer"></a></li>
+
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+    </header><!-- End Header -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">LogOut</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <br>
+
+
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static/img/yo.jpg" class="d-block w-100" alt="...">
       </div>
     </div>
-  </nav>
-</div>
+
+  </div>
 
   <br>
   <br>
+
   <center>
 
+
+    {% if incomplete %}
+    <h2> Complete the Profile </h2>
 
     <form action="/register_student" method=post enctype=multipart/form-data>
       <!-- <label for="type"></label> -->
@@ -72,8 +136,63 @@
       <input type="submit" class="btn btn-primary" value="Register Profile" id="type_ist" name="type_ist" required="">
       <br>
 
+
+    </form>
+    {% endif %}
+
+<div class="flash_message">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p class="flashtxt">{{ message }}</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
   </center>
-  </form>
+  <br>
+  <br>
+
+
+
+  <center>
+    <h2>COLLEGE LIST</h2>
+    <div class="row">
+
+      {% for (i,k) in list_col %}
+  {% if k!=0 and k%2==0 %}
+    </div>
+    <br>
+    <br>
+    <div class="row">
+
+      {% endif %}
+
+      <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+          <img src="static/img/campus2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{i.institute_name}}</h5>
+            <p class="card-text">{{i.mail}}</p>
+            <a href="/selection/{{i.institute_name}}" class="btn btn-primary">Apply</a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+
+
+
+
+
+  </center>
+
+
+  </center>
 
   <!-- Optional JavaScript; choose one of the two! -->
 

@@ -25,3 +25,20 @@ h3{
   table.inner{
     border: 0px;
   }
+
+.close {
+  position: absolute;
+  right: 1.5rem;
+  top: 0.5rem;
+  font-size: 2rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: inherit;
+}
+.alert-warning {
+ color:#8a6d3b;
+ background-color:#fcf8e3;
+ border-color:#faebcc;
+ top: -48px;
+ position: relative;
+}

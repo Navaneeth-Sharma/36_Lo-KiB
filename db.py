@@ -48,8 +48,8 @@ def update_password(user_mail, password):
     college_collection.update_one({'mail': user_mail}, {'$set': {'password': password_hash}})
 
 
-def save_student_details(f_name,l_name,email,dob,mobile,gender,address,city,pin,state,country,achievement,previous_class,previous_school,previous_score,previous_year):
-    student_collection.insert_one({'name': f_name+l_name, 'mail': email, 'dob': dob, 'contact detail': mobile, 'gender': gender,'address':address,'city':city,'pincode':pin,'state':state,'country':country,'achievement':achievement,'previous_class':previous_class,'previous_school':previous_school,'previous_score':previous_score,'previous_year':previous_year })
+def save_student_details(f_name,l_name,email,dob,mobile,gender,address,city,pin,state,country,document,previous_class,previous_school,previous_score,previous_year):
+    student_collection.insert_one({'name': str(f_name)+str(l_name), 'mail': email, 'dob': dob, 'contact detail': mobile, 'gender': gender,'address':address,'city':city,'pincode':pin,'state':state,'country':country,'drive_link':document,'previous_class':previous_class,'previous_school':previous_school,'previous_score':previous_score,'previous_year':previous_year })
 
 
 def save_college_details(name, mail,addr,country,contact,amenity,pin,state,board,uniid,courses,fees):
@@ -64,3 +64,19 @@ def save_school_details(name, mail,addr,country,contact,amenity,pin,state,board,
 
 def sc_requirement_update(sc_name,percentage,seats,last_date,bank):
     inst_details.update_one({'institute_name': sc_name}, {'$push': {'cutoff': percentage, 'seats_available':seats,'last_date':last_date,'bank_details':bank}})
+
+
+def acheivement_save(mail,score):
+    student_collection.update_one({'mail': mail}, {'$set': {'achievement': score}})
+
+def check_student(mail):
+    return student_collection.count_documents({'mail': mail})
+
+def get_colleges():
+    return inst_details.find(), inst_details.count()
+
+def collegedetails(name):
+    return inst_details.find_one({'institute_name': name})
+
+def studentdetails(mail):
+    return student_collection.find_one({'mail': mail})
